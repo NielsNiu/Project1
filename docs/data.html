@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Data – Student Alcohol Consumption</title>
+<title>2&nbsp; Dataset Overview – Student Alcohol Consumption</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Dataset Overview</strong></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Dataset Overview</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -149,8 +149,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a></li>
-  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a></li>
+  <li><a href="#dataset-structure" id="toc-dataset-structure" class="nav-link active" data-scroll-target="#dataset-structure"><span class="header-section-number">3</span> <strong>Dataset Structure</strong></a></li>
+  <li><a href="#key-variables-of-interest" id="toc-key-variables-of-interest" class="nav-link" data-scroll-target="#key-variables-of-interest"><span class="header-section-number">4</span> <strong>Key Variables of Interest</strong></a></li>
+  <li><a href="#data-considerations" id="toc-data-considerations" class="nav-link" data-scroll-target="#data-considerations"><span class="header-section-number">5</span> <strong>Data Considerations</strong></a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NielsNiu/Project1/edit/main/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NielsNiu/Project1/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -159,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Dataset Overview</strong></span></h1>
 </div>
 
 
@@ -176,11 +177,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="description" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="description"><span class="header-section-number">2.1</span> Description</h2>
+<p>The dataset used in this project comes from a survey conducted among secondary school students taking <strong>Math</strong> and <strong>Portuguese</strong> courses. It contains a variety of demographic, academic, and social factors that provide insights into students’ lifestyles, family backgrounds, study habits, and alcohol consumption patterns. The dataset is publicly available from the <strong>UCI Machine Learning Repository</strong> and is widely used for educational and research purposes.</p>
+<ul>
+<li><strong>Source:</strong> <a href="https://archive.ics.uci.edu/dataset/320/student+performance">UCI Machine Learning Repository – Student Performance</a><br>
+</li>
+<li><strong>Citation:</strong><br>
+<em>Cortez, P. (2008). Student Performance [Dataset]. UCI Machine Learning Repository.</em><br>
+<a href="https://doi.org/10.24432/C5TG7T">https://doi.org/10.24432/C5TG7T</a></li>
+</ul>
+<section id="dataset-structure" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <strong>Dataset Structure</strong></h1>
+<p>The dataset consists of two files:<br>
+- <strong><code>student-mat.csv</code></strong> – Data from students taking the Math course.<br>
+- <strong><code>student-por.csv</code></strong> – Data from students taking the Portuguese course.</p>
+<p>A total of <strong>33 attributes</strong> are included, covering:<br>
+- <strong>Demographics:</strong> Age, gender, school, home address type.<br>
+- <strong>Family Background:</strong> Parents’ education and jobs, family size, parental cohabitation status, and family relationship quality.<br>
+- <strong>Academic Performance:</strong> Grades for three periods (<strong>G1, G2, G3</strong>) and study-related factors like study time, failures, and support programs.<br>
+- <strong>Social Behavior:</strong> Extra-curricular activities, free time, going out with friends, romantic relationships.<br>
+- <strong>Health and Attendance:</strong> Self-reported health status and number of absences.<br>
+- <strong>Alcohol Consumption:</strong> Workday alcohol consumption (<strong>Dalc</strong>) and weekend alcohol consumption (<strong>Walc</strong>).</p>
 </section>
-<section id="missing-value-analysis" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</h2>
+<section id="key-variables-of-interest" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>Key Variables of Interest</strong></h1>
+<ul>
+<li><strong>Academic Performance</strong>: <code>G1</code>, <code>G2</code>, <code>G3</code> (final grade as the target variable).<br>
+</li>
+<li><strong>Alcohol Consumption</strong>: <code>Dalc</code> (weekday alcohol use) and <code>Walc</code> (weekend alcohol use).<br>
+</li>
+<li><strong>Social &amp; Family Factors</strong>: <code>goout</code> (frequency of going out with friends), <code>famrel</code> (family relationship quality), <code>romantic</code> (romantic relationship status).<br>
+</li>
+<li><strong>Health &amp; Well-being</strong>: <code>health</code> (self-reported health), <code>absences</code> (number of absences), <code>studytime</code> (weekly study hours).</li>
+</ul>
+</section>
+<section id="data-considerations" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <strong>Data Considerations</strong></h1>
+<ul>
+<li><strong>Duplicate Students</strong>: Some students (382) appear in both datasets and can be identified through identical demographic characteristics.<br>
+</li>
+<li><strong>Categorical vs.&nbsp;Numeric Data</strong>: Some variables are categorical (e.g., <code>sex</code>, <code>address</code>), while others are numeric (e.g., <code>age</code>, <code>grades</code>).<br>
+</li>
+<li><strong>Potential Biases</strong>: The dataset reflects students from a specific region and may not generalize to broader populations.</li>
+</ul>
 
 
 </section>

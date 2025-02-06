@@ -1,5 +1,37 @@
-# Data
+# **Dataset Overview**  
 
-## Description
+The dataset used in this project comes from a survey conducted among secondary school students taking **Math** and **Portuguese** courses. It contains a variety of demographic, academic, and social factors that provide insights into students' lifestyles, family backgrounds, study habits, and alcohol consumption patterns. The dataset is publicly available from the **UCI Machine Learning Repository** and is widely used for educational and research purposes.  
 
-## Missing value analysis
+- **Source:** [UCI Machine Learning Repository – Student Performance](https://archive.ics.uci.edu/dataset/320/student+performance)  
+- **Citation:**  
+  *Cortez, P. (2008). Student Performance [Dataset]. UCI Machine Learning Repository.*  
+  [https://doi.org/10.24432/C5TG7T](https://doi.org/10.24432/C5TG7T)  
+
+# **Dataset Structure**  
+
+The dataset consists of two files:  
+- **`student-mat.csv`** – Data from students taking the Math course.  
+- **`student-por.csv`** – Data from students taking the Portuguese course.  
+
+A total of **33 attributes** are included, covering:  
+- **Demographics:** Age, gender, school, home address type.  
+- **Family Background:** Parents' education and jobs, family size, parental cohabitation status, and family relationship quality.  
+- **Academic Performance:** Grades for three periods (**G1, G2, G3**) and study-related factors like study time, failures, and support programs.  
+- **Social Behavior:** Extra-curricular activities, free time, going out with friends, romantic relationships.  
+- **Health and Attendance:** Self-reported health status and number of absences.  
+- **Alcohol Consumption:** Workday alcohol consumption (**Dalc**) and weekend alcohol consumption (**Walc**).  
+
+# **Key Variables of Interest**  
+
+- **Academic Performance**: `G1`, `G2`, `G3` (final grade as the target variable).  
+- **Alcohol Consumption**: `Dalc` (weekday alcohol use) and `Walc` (weekend alcohol use).  
+- **Social & Family Factors**: `goout` (frequency of going out with friends), `famrel` (family relationship quality), `romantic` (romantic relationship status).  
+- **Health & Well-being**: `health` (self-reported health), `absences` (number of absences), `studytime` (weekly study hours).  
+
+# **Data Considerations**  
+
+- **Duplicate Students**: Some students (382) appear in both datasets and can be identified through identical demographic characteristics.  
+- **Categorical vs. Numeric Data**: Some variables are categorical (e.g., `sex`, `address`), while others are numeric (e.g., `age`, `grades`).  
+- **Potential Biases**: The dataset reflects students from a specific region and may not generalize to broader populations.  
+
+
