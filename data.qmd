@@ -2,7 +2,7 @@
 
 ## **Dataset Overview**  
 
-The dataset used in this project comes from a survey conducted among secondary school students taking **Math** and **Portuguese** courses. It contains a variety of demographic, academic, and social factors that provide insights into students' lifestyles, family backgrounds, study habits, and alcohol consumption patterns. The dataset is publicly available from the **UCI Machine Learning Repository** and is widely used for educational and research purposes.  
+The dataset for this project comes from a survey conducted among secondary school students taking **Math** and **Portuguese** courses. It contains a variety of demographic, academic, and social factors that provide insights into students' lifestyles, family backgrounds, study habits, and alcohol consumption patterns. The dataset is publicly available from the **UCI Machine Learning Repository** and is widely used for educational and research purposes.  
 
 - **Source:** [UCI Machine Learning Repository – Student Performance](https://archive.ics.uci.edu/dataset/320/student+performance)  
 - **Citation:**  

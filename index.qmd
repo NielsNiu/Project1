@@ -1,7 +1,7 @@
 # Introduction
 ### **Introduction**  
 
-People are beginning to drink alcohol at younger ages, and it appears that this trend is occurring earlier and earlier. I became interested in the effects of alcohol use on high school students' academic performance and general well-being after making this observation.
+People are now beginning to drink alcohol at younger ages, and it appears that this trend is occurring earlier and earlier. I became interested in the effects of alcohol use on high school students' academic performance and general well-being after making this observation.
 
 For this project, I want to explore and dive deeper into this social science field by analyzing real-world student data from the UCI Machine Learning Repository. I'll use this dataset to investigate the connections between students' grades, study habits, and health and alcohol use, both during the week and on the weekends. I'll also look into how drinking behavior is influenced by social and familial factors like family ties, parental education, and time spent with friends.
 
