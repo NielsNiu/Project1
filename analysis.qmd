@@ -1,4 +1,4 @@
-# **Statistical Analysis**  
+# Statistical Analysis
 
 In this section, I will lead to systematically analyze each research question using fundamental statistical techniques, including **regression analysis, t-tests, correlation coefficients, and significance tests**. We will uncover patterns in the data and determine whether alcohol consumption impacts students' academic performance and social behaviors.
 
