@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Statistical Analysis – Student Alcohol Consumption</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./conclusion.html" rel="next">
+<link href="./data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./analysis.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Statistical Analysis</strong></span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Student Alcohol Consumption</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/NielsNiu/Project1" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Data</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Statistical Analysis</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#alcohol-consumption-on-grades" id="toc-alcohol-consumption-on-grades" class="nav-link active" data-scroll-target="#alcohol-consumption-on-grades"><span class="header-section-number">3.1</span> <strong>Alcohol Consumption on Grades</strong></a>
+  <ul class="collapse">
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question"><span class="header-section-number">3.1.1</span> <strong>Question</strong></a></li>
+  <li><a href="#hypothesis" id="toc-hypothesis" class="nav-link" data-scroll-target="#hypothesis"><span class="header-section-number">3.1.2</span> <strong>Hypothesis</strong></a></li>
+  <li><a href="#regression-model-setup" id="toc-regression-model-setup" class="nav-link" data-scroll-target="#regression-model-setup"><span class="header-section-number">3.1.3</span> <strong>Regression Model Setup</strong></a></li>
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings"><span class="header-section-number">3.1.4</span> <strong>Key Findings</strong></a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="header-section-number">3.1.5</span> <strong>Model Performance</strong></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3.1.6</span> <strong>Conclusion</strong></a></li>
+  </ul></li>
+  <li><a href="#comparison-of-weekday-vs-weekend-alcohol-consumption" id="toc-comparison-of-weekday-vs-weekend-alcohol-consumption" class="nav-link" data-scroll-target="#comparison-of-weekday-vs-weekend-alcohol-consumption"><span class="header-section-number">3.2</span> <strong>Comparison of Weekday vs Weekend Alcohol Consumption</strong></a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1"><span class="header-section-number">3.2.1</span> <strong>Question</strong></a></li>
+  <li><a href="#hypothesis-1" id="toc-hypothesis-1" class="nav-link" data-scroll-target="#hypothesis-1"><span class="header-section-number">3.2.2</span> <strong>Hypothesis</strong></a></li>
+  <li><a href="#paired-two-sample-t-test-setup" id="toc-paired-two-sample-t-test-setup" class="nav-link" data-scroll-target="#paired-two-sample-t-test-setup"><span class="header-section-number">3.2.3</span> <strong>Paired Two-Sample t-Test Setup</strong></a></li>
+  <li><a href="#key-findings-1" id="toc-key-findings-1" class="nav-link" data-scroll-target="#key-findings-1"><span class="header-section-number">3.2.4</span> <strong>Key Findings</strong></a></li>
+  <li><a href="#model-performance-1" id="toc-model-performance-1" class="nav-link" data-scroll-target="#model-performance-1"><span class="header-section-number">3.2.5</span> <strong>Model Performance</strong></a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">3.2.6</span> <strong>Conclusion</strong></a></li>
+  </ul></li>
+  <li><a href="#correlation-between-social-factors-and-alcohol-use" id="toc-correlation-between-social-factors-and-alcohol-use" class="nav-link" data-scroll-target="#correlation-between-social-factors-and-alcohol-use"><span class="header-section-number">3.3</span> <strong>Correlation Between Social Factors and Alcohol Use</strong></a>
+  <ul class="collapse">
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2"><span class="header-section-number">3.3.1</span> <strong>Question</strong></a></li>
+  <li><a href="#hypothesis-2" id="toc-hypothesis-2" class="nav-link" data-scroll-target="#hypothesis-2"><span class="header-section-number">3.3.2</span> <strong>Hypothesis</strong></a></li>
+  </ul></li>
+  <li><a href="#computing-correlation-coefficients" id="toc-computing-correlation-coefficients" class="nav-link" data-scroll-target="#computing-correlation-coefficients"><span class="header-section-number">3.4</span> <strong>Computing Correlation Coefficients</strong></a>
+  <ul class="collapse">
+  <li><a href="#key-findings-2" id="toc-key-findings-2" class="nav-link" data-scroll-target="#key-findings-2"><span class="header-section-number">3.4.1</span> <strong>Key Findings</strong></a></li>
+  <li><a href="#conclusion-2" id="toc-conclusion-2" class="nav-link" data-scroll-target="#conclusion-2"><span class="header-section-number">3.4.2</span> <strong>Conclusion</strong></a></li>
+  </ul></li>
+  <li><a href="#predicting-final-grade-g3-using-social-and-academic-factors" id="toc-predicting-final-grade-g3-using-social-and-academic-factors" class="nav-link" data-scroll-target="#predicting-final-grade-g3-using-social-and-academic-factors"><span class="header-section-number">3.5</span> <strong>Predicting Final Grade (<code>G3</code>) Using Social and Academic Factors</strong></a>
+  <ul class="collapse">
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3"><span class="header-section-number">3.5.1</span> <strong>Question</strong></a></li>
+  <li><a href="#hypothesis-3" id="toc-hypothesis-3" class="nav-link" data-scroll-target="#hypothesis-3"><span class="header-section-number">3.5.2</span> <strong>Hypothesis</strong></a></li>
+  <li><a href="#regression-model-setup-1" id="toc-regression-model-setup-1" class="nav-link" data-scroll-target="#regression-model-setup-1"><span class="header-section-number">3.5.3</span> <strong>Regression Model Setup</strong></a></li>
+  <li><a href="#key-findings-3" id="toc-key-findings-3" class="nav-link" data-scroll-target="#key-findings-3"><span class="header-section-number">3.5.4</span> <strong>Key Findings:</strong></a></li>
+  <li><a href="#model-performance-2" id="toc-model-performance-2" class="nav-link" data-scroll-target="#model-performance-2"><span class="header-section-number">3.5.5</span> <strong>Model Performance:</strong></a></li>
+  <li><a href="#conclusion-3" id="toc-conclusion-3" class="nav-link" data-scroll-target="#conclusion-3"><span class="header-section-number">3.5.6</span> <strong>Conclusion</strong></a></li>
+  </ul></li>
+  <li><a href="#comprehensive-multiple-regression-analysis" id="toc-comprehensive-multiple-regression-analysis" class="nav-link" data-scroll-target="#comprehensive-multiple-regression-analysis"><span class="header-section-number">3.6</span> <strong>Comprehensive Multiple Regression Analysis</strong></a>
+  <ul class="collapse">
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4"><span class="header-section-number">3.6.1</span> <strong>Question</strong></a></li>
+  <li><a href="#which-variables-are-the-most-important-predictors-of-students-final-grades" id="toc-which-variables-are-the-most-important-predictors-of-students-final-grades" class="nav-link" data-scroll-target="#which-variables-are-the-most-important-predictors-of-students-final-grades"><span class="header-section-number">3.6.2</span> <strong>Which variables are the most important predictors of students’ final grades?</strong></a></li>
+  <li><a href="#regression-model-setup-2" id="toc-regression-model-setup-2" class="nav-link" data-scroll-target="#regression-model-setup-2"><span class="header-section-number">3.6.3</span> <strong>Regression Model Setup</strong></a></li>
+  <li><a href="#key-findings-4" id="toc-key-findings-4" class="nav-link" data-scroll-target="#key-findings-4"><span class="header-section-number">3.6.4</span> <strong>Key Findings:</strong></a></li>
+  <li><a href="#model-performance-3" id="toc-model-performance-3" class="nav-link" data-scroll-target="#model-performance-3"><span class="header-section-number">3.6.5</span> <strong>Model Performance:</strong></a></li>
+  <li><a href="#conclusion-4" id="toc-conclusion-4" class="nav-link" data-scroll-target="#conclusion-4"><span class="header-section-number">3.6.6</span> <strong>Conclusion</strong></a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/NielsNiu/Project1/edit/main/analysis.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NielsNiu/Project1/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Statistical Analysis</strong></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this section, I will lead to systematically analyze each research question using fundamental statistical techniques, including <strong>regression analysis, t-tests, correlation coefficients, and significance tests</strong>. We will uncover patterns in the data and determine whether alcohol consumption impacts students’ academic performance and social behaviors.</p>
+<section id="alcohol-consumption-on-grades" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="alcohol-consumption-on-grades"><span class="header-section-number">3.1</span> <strong>Alcohol Consumption on Grades</strong></h2>
+<section id="question" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="question"><span class="header-section-number">3.1.1</span> <strong>Question</strong></h3>
+<p><strong>Does alcohol consumption during weekdays and weekends significantly affect students’ final grades?</strong><br>
+To investigate this, I will use <strong>linear regression</strong>, with students’ <strong>final grade (G3)</strong> as the dependent variable and <strong>weekday alcohol consumption (Dalc)</strong> and <strong>weekend alcohol consumption (Walc)</strong> as independent variables. This will help determine whether alcohol consumption has a measurable impact on students’ final grades.</p>
+</section>
+<section id="hypothesis" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="hypothesis"><span class="header-section-number">3.1.2</span> <strong>Hypothesis</strong></h3>
+<ul>
+<li><strong>Null Hypothesis (H₀):</strong> There is no significant relationship between alcohol consumption and final grades.<br>
+</li>
+<li><strong>Alternative Hypothesis (H₁):</strong> Higher alcohol consumption negatively affects students’ final grades.</li>
+</ul>
+</section>
+<section id="regression-model-setup" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="regression-model-setup"><span class="header-section-number">3.1.3</span> <strong>Regression Model Setup</strong></h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"student-mat.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(G3 <span class="sc">~</span> Dalc <span class="sc">+</span> Walc, <span class="at">data =</span> df)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = G3 ~ Dalc + Walc, data = df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-10.6356  -2.0522   0.3644   3.3644   9.3644 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  10.9232     0.4960  22.021   &lt;2e-16 ***
+Dalc         -0.1862     0.3403  -0.547    0.585    
+Walc         -0.1014     0.2354  -0.431    0.667    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.585 on 392 degrees of freedom
+Multiple R-squared:  0.003459,  Adjusted R-squared:  -0.001625 
+F-statistic: 0.6803 on 2 and 392 DF,  p-value: 0.507</code></pre>
+</div>
+</div>
+<p>Based on the linear regression model, we obtain the following equation:</p>
+<p>[ G3 = 10.9232 - 0.1862 Dalc - 0.1014 Walc ] where:</p>
+<ul>
+<li><code>Dalc</code> represents weekday alcohol consumption.<br>
+</li>
+<li><code>Walc</code> represents weekend alcohol consumption.</li>
+</ul>
+</section>
+<section id="key-findings" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="key-findings"><span class="header-section-number">3.1.4</span> <strong>Key Findings</strong></h3>
+<ol type="1">
+<li><p><strong>Intercept (<code>10.9232</code>)</strong></p>
+<ul>
+<li>So we know that if a student does not consume alcohol on weekdays or weekends (<code>Dalc = 0</code>, <code>Walc = 0</code>), their expected final grade is 10.92.</li>
+</ul></li>
+<li><p><strong>Effect of Weekday Alcohol Consumption (<code>Dalc</code>)</strong></p>
+<ul>
+<li>Here the estimated coefficient is -0.1862, meaning that for every 1-unit increase in weekday alcohol consumption, the expected final grade decreases.</li>
+</ul></li>
+<li><p><strong>Effect of Weekend Alcohol Consumption (<code>Walc</code>)</strong></p>
+<ul>
+<li>The estimated coefficient is -0.1014, meaning that for every 1-unit increase in weekend alcohol consumption, the expected final grade decreases slightly.</li>
+</ul></li>
+</ol>
+</section>
+<section id="model-performance" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">3.1.5</span> <strong>Model Performance</strong></h3>
+<ul>
+<li><strong>R² = 0.0035</strong> → The model explains only 0.35% of the variation in final grades.<br>
+</li>
+<li><strong>F-statistic = 0.6803, p-value = 0.507</strong> → Since the p-value is greater than 0.05, we fail to reject the null hypothesis that <code>Dalc</code> and <code>Walc</code> have any combined effect on <code>G3</code>.</li>
+</ul>
+</section>
+<section id="conclusion" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.1.6</span> <strong>Conclusion</strong></h3>
+<ul>
+<li>Neither weekday nor weekend alcohol consumption has a statistically significant impact on students’ final grades.</li>
+<li>The model does not effectively explain variations in <code>G3</code>, meaning other factors like study time, absences, or family support might be more influential in predicting academic performance.</li>
+</ul>
+</section>
+</section>
+<section id="comparison-of-weekday-vs-weekend-alcohol-consumption" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="comparison-of-weekday-vs-weekend-alcohol-consumption"><span class="header-section-number">3.2</span> <strong>Comparison of Weekday vs Weekend Alcohol Consumption</strong></h2>
+<section id="question-1" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="question-1"><span class="header-section-number">3.2.1</span> <strong>Question</strong></h3>
+<p><strong>Are the effects of alcohol consumption different when comparing weekday consumption vs weekend consumption?</strong></p>
+</section>
+<section id="hypothesis-1" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="hypothesis-1"><span class="header-section-number">3.2.2</span> <strong>Hypothesis</strong></h3>
+<ul>
+<li><strong>Null Hypothesis (H₀):</strong> There is no significant difference between weekday (<code>Dalc</code>) and weekend (<code>Walc</code>) alcohol consumption.<br>
+</li>
+<li><strong>Alternative Hypothesis (H₁):</strong> There is a significant difference between weekday (<code>Dalc</code>) and weekend (<code>Walc</code>) alcohol consumption.</li>
+</ul>
+</section>
+<section id="paired-two-sample-t-test-setup" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="paired-two-sample-t-test-setup"><span class="header-section-number">3.2.3</span> <strong>Paired Two-Sample t-Test Setup</strong></h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(df<span class="sc">$</span>Dalc, df<span class="sc">$</span>Walc, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t_test_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  df$Dalc and df$Walc
+t = -16.379, df = 394, p-value &lt; 2.2e-16
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.9073706 -0.7128826
+sample estimates:
+mean difference 
+     -0.8101266 </code></pre>
+</div>
+</div>
+</section>
+<section id="key-findings-1" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="key-findings-1"><span class="header-section-number">3.2.4</span> <strong>Key Findings</strong></h3>
+<ol type="1">
+<li><strong>Mean Difference (<code>-0.8101</code>)</strong>
+<ul>
+<li>The average alcohol consumption level on weekends (<code>Walc</code>) is 0.81 units higher than on weekdays (<code>Dalc</code>).<br>
+</li>
+<li>This suggests that students tend to drink significantly more on weekends compared to weekdays.</li>
+</ul></li>
+<li><strong>p-value Analysis (<code>&lt; 2.2e-16</code>)</strong>
+<ul>
+<li>Since the p-value is extremely small (<code>&lt; 0.05</code>), we reject the null hypothesis.<br>
+</li>
+<li>This indicates a statistically significant difference between weekday and weekend alcohol consumption.<br>
+</li>
+<li>Therefore, students drink more on weekends than they do on weekdays.</li>
+</ul></li>
+<li><strong>Confidence Interval (<code>[-0.9074, -0.7129]</code>)</strong>
+<ul>
+<li>The 95% confidence interval for the mean difference does not include zero, reinforcing the statistical significance of the result. The negative values indicate that weekend consumption is consistently higher than weekday consumption.</li>
+</ul></li>
+</ol>
+</section>
+<section id="model-performance-1" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="model-performance-1"><span class="header-section-number">3.2.5</span> <strong>Model Performance</strong></h3>
+<ul>
+<li><strong>t-statistic = -16.379</strong> → We see a large negative value, so it suggests a strong difference between weekday and weekend drinking.<br>
+</li>
+<li><strong>p-value &lt; 2.2e-16</strong> → There is strong evidence against the null hypothesis, confirming a significant difference.</li>
+</ul>
+</section>
+<section id="conclusion-1" class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">3.2.6</span> <strong>Conclusion</strong></h3>
+<ul>
+<li>On weekends, students drink a lot more alcohol than they do during the week. The findings imply that students’ weekend drinking habits are more prevalent. Therefore, it is reasonable to assume that weekend social events and free time are factors in increased alcohol intake.</li>
+</ul>
+</section>
+</section>
+<section id="correlation-between-social-factors-and-alcohol-use" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="correlation-between-social-factors-and-alcohol-use"><span class="header-section-number">3.3</span> <strong>Correlation Between Social Factors and Alcohol Use</strong></h2>
+<section id="question-2" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="question-2"><span class="header-section-number">3.3.1</span> <strong>Question</strong></h3>
+<p><strong>How does students’ tendency to go out with friends correlate with their weekday and weekend alcohol consumption?</strong></p>
+</section>
+<section id="hypothesis-2" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="hypothesis-2"><span class="header-section-number">3.3.2</span> <strong>Hypothesis</strong></h3>
+<ul>
+<li><strong>Null Hypothesis (<code>H₀</code>)</strong>: There is no significant correlation between <strong>going out with friends (<code>goout</code>)</strong> and <strong>alcohol consumption (<code>Dalc</code> and <code>Walc</code>)</strong>.<br>
+</li>
+<li><strong>Alternative Hypothesis (<code>H₁</code>)</strong>: There is a significant correlation between <strong>going out with friends (<code>goout</code>)</strong> and <strong>alcohol consumption (<code>Dalc</code> and <code>Walc</code>)</strong>.</li>
+</ul>
+</section>
+</section>
+<section id="computing-correlation-coefficients" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="computing-correlation-coefficients"><span class="header-section-number">3.4</span> <strong>Computing Correlation Coefficients</strong></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cor1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(df<span class="sc">$</span>goout, df<span class="sc">$</span>Dalc, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cor2 <span class="ot">&lt;-</span> <span class="fu">cor</span>(df<span class="sc">$</span>goout, df<span class="sc">$</span>Walc, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cor1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2669938</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cor2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4203857</code></pre>
+</div>
+</div>
+<section id="key-findings-2" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="key-findings-2"><span class="header-section-number">3.4.1</span> <strong>Key Findings</strong></h3>
+<ol type="1">
+<li><strong>Correlation Between goout and Dalc (Weekday Alcohol Use) = 0.267</strong></li>
+</ol>
+<ul>
+<li>Although the relationship is not very strong, there is a fairly weak positive correlation, indicating that students who go out more often tend to drink a little more during the week.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Correlation Between goout and Walc (Weekend Alcohol Use) = 0.420 </strong></li>
+</ol>
+<ul>
+<li>There is a moderate positive correlation, indicating that students who go out more often drink significantly more on weekends compared to weekdays. The correlation is stronger for weekend drinking, which is what we normaly expect that students socialize and drink more on weekends.</li>
+</ul>
+</section>
+<section id="conclusion-2" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="conclusion-2"><span class="header-section-number">3.4.2</span> <strong>Conclusion</strong></h3>
+<ul>
+<li>This supports the idea that socializing on the weekends has a greater impact on alcohol consumption than socializing during the week. This brings us to our next investigation, which is whether romantic relationships have an effect on how much alcohol people drink.</li>
+</ul>
+</section>
+</section>
+<section id="predicting-final-grade-g3-using-social-and-academic-factors" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="predicting-final-grade-g3-using-social-and-academic-factors"><span class="header-section-number">3.5</span> <strong>Predicting Final Grade (<code>G3</code>) Using Social and Academic Factors</strong></h2>
+<section id="question-3" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="question-3"><span class="header-section-number">3.5.1</span> <strong>Question</strong></h3>
+<p><strong>Can other variables predict students’ final grades?</strong></p>
+</section>
+<section id="hypothesis-3" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="hypothesis-3"><span class="header-section-number">3.5.2</span> <strong>Hypothesis</strong></h3>
+<ul>
+<li><strong>Null Hypothesis (<code>H₀</code>)</strong>: The selected independent variables do not significantly predict students’ final grades (<code>G3</code>).<br>
+</li>
+<li><strong>Alternative Hypothesis (<code>H₁</code>)</strong>: At least one of the selected independent variables significantly predicts students’ final grades (<code>G3</code>).</li>
+</ul>
+</section>
+<section id="regression-model-setup-1" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="regression-model-setup-1"><span class="header-section-number">3.5.3</span> <strong>Regression Model Setup</strong></h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(G3 <span class="sc">~</span> studytime <span class="sc">+</span> absences <span class="sc">+</span> failures <span class="sc">+</span> goout <span class="sc">+</span> Walc <span class="sc">+</span> Dalc, <span class="at">data =</span> df)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = G3 ~ studytime + absences + failures + goout + Walc + 
+    Dalc, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-12.155  -1.861   0.228   3.078   8.957 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 11.47162    0.92787  12.363  &lt; 2e-16 ***
+studytime    0.24862    0.26850   0.926    0.355    
+absences     0.03320    0.02718   1.221    0.223    
+failures    -2.14922    0.29696  -7.238 2.47e-12 ***
+goout       -0.44774    0.21396  -2.093    0.037 *  
+Walc         0.19144    0.23727   0.807    0.420    
+Dalc        -0.05432    0.31783  -0.171    0.864    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.27 on 388 degrees of freedom
+Multiple R-squared:  0.1444,    Adjusted R-squared:  0.1312 
+F-statistic: 10.91 on 6 and 388 DF,  p-value: 3.068e-11</code></pre>
+</div>
+</div>
+<p>Based on the multiple linear regression model, we obtain the following equation:</p>
+<p>[ G3 = 11.4716 + 0.2486 studytime + 0.0332 absences - 2.1492 failures - 0.4477 goout + 0.1914 Walc - 0.0543 Dalc ]</p>
+<p>where:<br>
+- <code>studytime</code> represents <strong>weekly study time</strong>.<br>
+- <code>absences</code> represents <strong>total school absences</strong>.<br>
+- <code>failures</code> represents <strong>number of past class failures</strong>.<br>
+- <code>goout</code> represents <strong>going out with friends</strong>.<br>
+- <code>Walc</code> represents <strong>weekend alcohol consumption</strong>.<br>
+- <code>Dalc</code> represents <strong>weekday alcohol consumption</strong>.</p>
+</section>
+<section id="key-findings-3" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="key-findings-3"><span class="header-section-number">3.5.4</span> <strong>Key Findings:</strong></h3>
+<ol type="1">
+<li><strong>Significant Predictors:</strong>
+<ul>
+<li><strong><code>failures (-2.1492, p &lt; 0.001)</code>:</strong>
+<ul>
+<li>The most significant predictor, indicating that each additional past failure decreases <code>G3</code> by 2.15 points** on average.<br>
+</li>
+</ul></li>
+<li><strong><code>goout (-0.4477, p = 0.037)</code>:</strong>
+<ul>
+<li>This is a negative effect, meaning that students who go out more tend to have lower grades.</li>
+</ul></li>
+</ul></li>
+<li><strong>Non-Significant Predictors (<code>p &gt; 0.05</code>):</strong>
+<ul>
+<li><code>studytime (p = 0.355)</code>: It is surprising that there is no strong evidence that weekly study time influences final grades.<br>
+</li>
+<li><code>absences (p = 0.223)</code>: This is also surprising that absence has no significant impact on final grades.<br>
+</li>
+<li><code>Walc (p = 0.420)</code> &amp; <code>Dalc (p = 0.864)</code>:
+<ul>
+<li>Neither weekday nor weekend alcohol consumption significantly predicts <code>G3</code>, supporting earlier findings that alcohol consumption does not strongly impact academic performance.</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="model-performance-2" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="model-performance-2"><span class="header-section-number">3.5.5</span> <strong>Model Performance:</strong></h3>
+<ul>
+<li><strong>R² = 0.1444</strong> → The model explains only 14.44% of the variation in final grades.<br>
+</li>
+<li><strong>F-statistic = 10.91, p-value = 3.07e-11</strong> → The model is statistically significant overall, meaning at least one predictor contributes to explaining <code>G3</code>.</li>
+</ul>
+</section>
+<section id="conclusion-3" class="level3" data-number="3.5.6">
+<h3 data-number="3.5.6" class="anchored" data-anchor-id="conclusion-3"><span class="header-section-number">3.5.6</span> <strong>Conclusion</strong></h3>
+<ul>
+<li>The best predictor of final grades is past failures (referred to as “failures”), with each additional failure resulting in an average decrease of 2.15 points.<br>
+</li>
+<li>Socializing (going out) has a small but significant negative impact on grades, which suggests that too much social activity may reduce academic performance.<br>
+</li>
+<li>The amount of alcohol consumed (<code>Dalc</code>, <code>Walc</code>) does not have a significant effect on grades*.</li>
+<li>The model accounts for only 14% of the differences in final grades, suggesting that other factors, such as motivation, teaching quality, and home environment, probably have a greater impact on how well students perform.</li>
+</ul>
+</section>
+</section>
+<section id="comprehensive-multiple-regression-analysis" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="comprehensive-multiple-regression-analysis"><span class="header-section-number">3.6</span> <strong>Comprehensive Multiple Regression Analysis</strong></h2>
+<section id="question-4" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="question-4"><span class="header-section-number">3.6.1</span> <strong>Question</strong></h3>
+</section>
+<section id="which-variables-are-the-most-important-predictors-of-students-final-grades" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="which-variables-are-the-most-important-predictors-of-students-final-grades"><span class="header-section-number">3.6.2</span> <strong>Which variables are the most important predictors of students’ final grades?</strong></h3>
+</section>
+<section id="regression-model-setup-2" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="regression-model-setup-2"><span class="header-section-number">3.6.3</span> <strong>Regression Model Setup</strong></h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(G3 <span class="sc">~</span> ., <span class="at">data =</span> df)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(full_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = G3 ~ ., data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.9339 -0.5532  0.2680  0.9689  4.6461 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      -1.115488   2.116958  -0.527 0.598573    
+schoolMS          0.480742   0.366512   1.312 0.190485    
+sexM              0.174396   0.233588   0.747 0.455805    
+age              -0.173302   0.100780  -1.720 0.086380 .  
+addressU          0.104455   0.270791   0.386 0.699922    
+famsizeLE3        0.036512   0.226680   0.161 0.872128    
+PstatusT         -0.127673   0.335626  -0.380 0.703875    
+Medu              0.129685   0.149999   0.865 0.387859    
+Fedu             -0.133940   0.128768  -1.040 0.298974    
+Mjobhealth       -0.146426   0.518491  -0.282 0.777796    
+Mjobother         0.074088   0.332044   0.223 0.823565    
+Mjobservices      0.046956   0.369587   0.127 0.898973    
+Mjobteacher      -0.026276   0.481632  -0.055 0.956522    
+Fjobhealth        0.330948   0.666601   0.496 0.619871    
+Fjobother        -0.083582   0.476796  -0.175 0.860945    
+Fjobservices     -0.322142   0.493265  -0.653 0.514130    
+Fjobteacher      -0.112364   0.601448  -0.187 0.851907    
+reasonhome       -0.209183   0.256392  -0.816 0.415123    
+reasonother       0.307554   0.380214   0.809 0.419120    
+reasonreputation  0.129106   0.267254   0.483 0.629335    
+guardianmother    0.195741   0.252672   0.775 0.439046    
+guardianother     0.006565   0.463650   0.014 0.988710    
+traveltime        0.096994   0.157800   0.615 0.539170    
+studytime        -0.104754   0.134814  -0.777 0.437667    
+failures         -0.160539   0.161006  -0.997 0.319399    
+schoolsupyes      0.456448   0.319538   1.428 0.154043    
+famsupyes         0.176870   0.224204   0.789 0.430710    
+paidyes           0.075764   0.222100   0.341 0.733211    
+activitiesyes    -0.346047   0.205938  -1.680 0.093774 .  
+nurseryyes       -0.222716   0.254184  -0.876 0.381518    
+higheryes         0.225921   0.500398   0.451 0.651919    
+internetyes      -0.144462   0.287528  -0.502 0.615679    
+romanticyes      -0.272008   0.219732  -1.238 0.216572    
+famrel            0.356876   0.114124   3.127 0.001912 ** 
+freetime          0.047002   0.110209   0.426 0.670021    
+goout             0.012007   0.105230   0.114 0.909224    
+Dalc             -0.185019   0.153124  -1.208 0.227741    
+Walc              0.176772   0.114943   1.538 0.124966    
+health            0.062995   0.074800   0.842 0.400259    
+absences          0.045879   0.013412   3.421 0.000698 ***
+G1                0.188847   0.062373   3.028 0.002645 ** 
+G2                0.957330   0.053460  17.907  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.901 on 353 degrees of freedom
+Multiple R-squared:  0.8458,    Adjusted R-squared:  0.8279 
+F-statistic: 47.21 on 41 and 353 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="key-findings-4" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="key-findings-4"><span class="header-section-number">3.6.4</span> <strong>Key Findings:</strong></h3>
+<ol type="1">
+<li><strong>Most Significant Predictors (<code>p &lt; 0.05</code>):</strong>
+<ul>
+<li><strong><code>G2 (0.9573, p &lt; 2e-16)</code>:</strong>
+<ul>
+<li>The strongest predictor of <code>G3</code>, indicating that each unit increase in <code>G2</code> leads to an almost 1-unit increase in <code>G3</code>.<br>
+</li>
+</ul></li>
+<li><strong><code>G1 (0.1888, p = 0.0026)</code>:</strong>
+<ul>
+<li>Also a significant predictor, meaning early academic performance is highly predictive of final grades.<br>
+</li>
+</ul></li>
+<li><strong><code>absences (0.0459, p = 0.0007)</code>:</strong>
+<ul>
+<li>A small but significant positive effect, suggesting that higher absences are slightly associated with increased grades (potentially due to self-study or external factors).<br>
+</li>
+</ul></li>
+<li><strong><code>famrel (0.3569, p = 0.0019)</code>:</strong>
+<ul>
+<li>We see that better family relationships are positively correlated with higher final grades, emphasizing the role of family support.</li>
+</ul></li>
+</ul></li>
+<li><strong>Moderately Significant Predictors (<code>0.05 &lt; p &lt; 0.1</code>):</strong>
+<ul>
+<li><strong><code>activities (-0.3460, p = 0.0938)</code>:</strong>
+<ul>
+<li>Suggests that participation in extracurricular activities may slightly decrease final grades.<br>
+</li>
+</ul></li>
+<li><strong><code>age (-0.1733, p = 0.0864)</code>:</strong>
+<ul>
+<li>Indicates that older students tend to have slightly lower grades, which may be due to differences in academic engagement.</li>
+</ul></li>
+</ul></li>
+<li><strong>Non-Significant Predictors (<code>p &gt; 0.1</code>):</strong>
+<ul>
+<li><strong>Most demographic factors</strong> (e.g., <code>sex</code>, <code>school</code>, <code>parent education</code>, <code>guardian</code>, <code>studytime</code>, <code>health</code>, <code>alcohol consumption</code>) were not statistically significant.<br>
+</li>
+<li><strong>Alcohol consumption (<code>Dalc</code>, <code>Walc</code>)</strong> remains insignificant, further confirming that drinking behavior does not strongly impact academic performance.</li>
+</ul></li>
+</ol>
+</section>
+<section id="model-performance-3" class="level3" data-number="3.6.5">
+<h3 data-number="3.6.5" class="anchored" data-anchor-id="model-performance-3"><span class="header-section-number">3.6.5</span> <strong>Model Performance:</strong></h3>
+<ul>
+<li><strong>R² = 0.8458</strong> → The model explains <strong>84.58% of the variation</strong> in final grades, suggesting a very strong fit.<br>
+</li>
+<li><strong>F-statistic = 47.21, p-value &lt; 2.2e-16</strong> → The model as a whole is highly significant, confirming that at least some predictors are meaningful.</li>
+</ul>
+</section>
+<section id="conclusion-4" class="level3" data-number="3.6.6">
+<h3 data-number="3.6.6" class="anchored" data-anchor-id="conclusion-4"><span class="header-section-number">3.6.6</span> <strong>Conclusion</strong></h3>
+<p>My analysis shows that a student’s final grade (<code>G3</code>) is mainly influenced by their earlier grades (<code>G1</code>, <code>G2</code>). This means that students who do well at the beginning of the year are likely to keep doing well. <strong>Family support (<code>famrel</code>)</strong> has a small positive effect on grades, meaning students with good family relationships tend to perform better in school. Absences have a small positive connection to final grades. This suggests that some students can do well even if they skip school, possibly because they study independently. On the other hand, <strong>extracurricular activities</strong> might slightly lower grades, suggesting that it can be hard to balance schoolwork with other activities. Surprisingly, drinking alcohol (<code>Dalc</code>, <code>Walc</code>) does not appear to influence grades, which suggests that alcohol use does not directly affect academic performance according to this data. The model accounts for about 85% of the differences in final grades, but by removing unneeded factors and looking at how different variables work together, we could improve the predictions even more.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data.html" class="pagination-link" aria-label="**Data**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Data</strong></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./conclusion.html" class="pagination-link" aria-label="Conclusion">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Conclusion</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NielsNiu/Project1/edit/main/analysis.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NielsNiu/Project1/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
